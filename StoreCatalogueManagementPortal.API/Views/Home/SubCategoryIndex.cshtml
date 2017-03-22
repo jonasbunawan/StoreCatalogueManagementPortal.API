@@ -1,0 +1,59 @@
+﻿@model IEnumerable<StoreCatalogueManagementPortal.DataModel.Models.SubCategory>
+
+@{
+    ViewBag.Title = "SubCategory";
+}
+
+<h2>SubCategory</h2>
+
+<p>
+    @Html.ActionLink("Create New SubCategory", "CreateSubCategory")
+</p>
+
+<p>
+@using (Html.BeginForm())
+{
+    <p>SubCategory ID: @Html.TextBox("ID")
+    <input type="submit" value="Search" class="btn btn-default"/></p>
+}
+</p>
+
+
+<table class="table border row">
+    <tr>
+        <th class="border col-xs-3 col-sm-3">
+            @Html.DisplayNameFor(model => model.SubCategoryID)
+           
+        </th>
+        <th class="border col-xs-3 col-sm-3">@Html.DisplayNameFor(model => model.SubCategoryName)</th>
+        <th class="border col-xs-3 col-sm-3">@Html.DisplayNameFor(model => model.CategoryID)</th>
+        <th class="border col-xs-3 col-sm-3">Action</th>
+    </tr>
+
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td class="border col-xs-3 col-sm-3">
+            @Html.DisplayFor(modelItem => item.SubCategoryID)
+            
+        </td>
+        <td class="border col-xs-3 col-sm-3">
+            @Html.DisplayFor(modelItem => item.SubCategoryName)
+        </td>
+        <td class="border col-xs-3 col-sm-3">
+            @Html.DisplayFor(modelItem => item.CategoryID)
+        </td>
+        <td class="border col-xs-3 col-sm-3">
+            @Html.ActionLink("Edit", "UpdateSubCategory", new { id=item.SubCategoryID }) |
+            
+            @Html.ActionLink("Delete", "DeleteSubCategory", new { id=item.SubCategoryID })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "SubCategoryIndex")
+</div>

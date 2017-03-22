@@ -1,0 +1,55 @@
+﻿@model IEnumerable<StoreCatalogueManagementPortal.DataModel.Models.Category>
+
+@{
+    ViewBag.Title = "Category";
+}
+
+<h2>Category</h2>
+
+<p>
+    @Html.ActionLink("Create New Category", "CreateCategory")
+</p>
+
+<p>
+@using (Html.BeginForm())
+{
+    <p>Category ID: @Html.TextBox("ID")
+    <input type="submit" value="Search" class="btn btn-default"/></p>
+}
+</p>
+
+
+<table class="table">
+    <tr>
+        <th class="col-xs-6 col-sm-4">
+            @Html.DisplayNameFor(model => model.CategoryID)
+           
+        </th>
+        <th class="col-xs-6 col-sm-4">@Html.DisplayNameFor(model => model.CategoryName)</th>
+        <th class="col-xs-6 col-sm-4">Action</th>
+    </tr>
+
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td class="col-xs-6 col-sm-4">
+            @Html.DisplayFor(modelItem => item.CategoryID)
+            
+        </td>
+        <td class="col-xs-6 col-sm-4">
+            @Html.DisplayFor(modelItem => item.CategoryName)
+        </td>
+        <td class="col-xs-6 col-sm-4">
+            @Html.ActionLink("Edit", "UpdateCategory", new { id=item.CategoryID }) |
+            
+            @Html.ActionLink("Delete", "DeleteCategory", new { id=item.CategoryID })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "CategoryIndex")
+</div>

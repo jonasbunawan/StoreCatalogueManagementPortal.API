@@ -1,0 +1,59 @@
+﻿@model IEnumerable<StoreCatalogueManagementPortal.DataModel.Models.Product>
+
+@{
+    ViewBag.Title = "Product";
+}
+
+<h2>Product</h2>
+
+<p>
+    @Html.ActionLink("Create New Product", "CreateProduct")
+</p>
+
+<p>
+@using (Html.BeginForm())
+{
+    <p>Product ID: @Html.TextBox("ID")
+    <input type="submit" value="Search" class="btn btn-default"/></p>
+}
+</p>
+
+
+<table class="table border row">
+    <tr>
+        <th class="border col-xs-3 col-sm-3">
+            @Html.DisplayNameFor(model => model.ProductID)
+           
+        </th>
+        <th class="border col-xs-3 col-sm-3">@Html.DisplayNameFor(model => model.ProductName)</th>
+        <th class="border col-xs-3 col-sm-3">@Html.DisplayNameFor(model => model.SubCategoryID)</th>
+        <th class="border col-xs-3 col-sm-3">Action</th>
+    </tr>
+
+
+
+@foreach (var item in Model) {
+    <tr>
+        <td class="border col-xs-3 col-sm-3">
+            @Html.DisplayFor(modelItem => item.ProductID)
+            
+        </td>
+        <td class="border col-xs-3 col-sm-3">
+            @Html.DisplayFor(modelItem => item.ProductName)
+        </td>
+        <td class="border col-xs-3 col-sm-3">
+            @Html.DisplayFor(modelItem => item.SubCategoryID)
+        </td>
+        <td class="border col-xs-3 col-sm-3">
+            @Html.ActionLink("Edit", "UpdateProduct", new { id=item.ProductID }) |
+            
+            @Html.ActionLink("Delete", "DeleteProduct", new { id=item.ProductID })
+        </td>
+    </tr>
+}
+
+</table>
+
+<div>
+    @Html.ActionLink("Back to List", "ProductIndex")
+</div>
